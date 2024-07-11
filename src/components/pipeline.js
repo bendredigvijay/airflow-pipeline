@@ -121,7 +121,7 @@ const Pipeline = () => {
   const tableData = useMemo(() => {
     return Array.isArray(dataState) ? dataState.map((item, index) => ({
       ...item,
-      serialNo: index + 1, // Calculate serial number (S.No)
+      serialNo: index + 1,
     })) : [];
   }, [dataState]);
 
@@ -249,12 +249,12 @@ const Pipeline = () => {
       <Modal
         opened={createModalOpen}
         onClose={handleCancelCreate}
-        title={<h3 style={{ marginRight: '10px' , fontWeight: 'bold' }}>Create Item</h3>}
+        title={<h3 style={{ marginRight: '10px' , fontWeight: 'bold' }}>Setup Pipelines</h3>}
       >
         <div>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Data Extraction</Button>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Data Transformation</Button>
-          <Button style={{ marginBottom: '10px', width: '100%' }}>Run Module</Button>
+          <Button style={{ marginBottom: '10px', width: '100%' }}>Run Model</Button>
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
           <Button onClick={handleCancelCreate} style={{ marginRight: '10px' }} color="red">
               Cancel
@@ -262,7 +262,6 @@ const Pipeline = () => {
             <Button onClick={handleSaveCreate} >
               Save
             </Button>
-           
           </div>
         </div>
       </Modal>
