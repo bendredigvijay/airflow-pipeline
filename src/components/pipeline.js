@@ -1,15 +1,17 @@
 import React, { useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
 import { Button, TextInput, Modal } from '@mantine/core';
 import { FaEdit, FaRegClone } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
-import data from '../jsons/pipeline.json'; 
+import data from '../jsons/pipeline.json';
 
 const Pipeline = () => {
   const [dataState, setDataState] = useState(data);
   const [editItem, setEditItem] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Columns definition
   const columns = useMemo(
@@ -111,11 +113,15 @@ const Pipeline = () => {
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto cbm-wrapper d-flex justify-content-center">
-        <div style={{ margin: "1%" }}>
-          <MantineReactTable table={table} />
+      <div className="flex-1 overflow-auto cbm-wrapper">
+        <div className="d-flex flex-column" style={{margin:"1%"}}>
+          <MantineReactTable
+            table={table}
+            style={{ width: '100%', overflowX: 'auto', margin:'1%' }}
+          />
         </div>
       </div>
+
 
       <Modal
         opened={editModalOpen}
@@ -183,7 +189,12 @@ const Pipeline = () => {
         title={<h3 style={{ marginRight: '10px', fontWeight: 'bold' }}>Setup Pipelines</h3>}
       >
         <div>
-          <Button style={{ marginBottom: '10px', width: '100%' }}>Data Extraction</Button>
+          <Button
+            style={{ marginBottom: '10px', width: '100%' }}
+            onClick={() => navigate('/airflow-pipeline')}
+          >
+            Data Extraction
+          </Button>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Data Transformation</Button>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Run Model</Button>
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
