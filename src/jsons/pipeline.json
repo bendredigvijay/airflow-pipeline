@@ -1,0 +1,74 @@
+[
+    {
+      "id": 1,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 2,
+      "name": { "firstName": "Jane", "lastName": "Doe" },
+      "environment": "Development",
+      "noOfDAGs": 3,
+      "createdOn": "2023-06-20",
+      "createdBy": "Bob Johnson"
+    },
+    {
+      "id": 3,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 4,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 5,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 6,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 7,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 8,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    },
+    {
+      "id": 9,
+      "name": { "firstName": "John", "lastName": "Doe" },
+      "environment": "Production",
+      "noOfDAGs": 5,
+      "createdOn": "2023-05-15",
+      "createdBy": "Alice Smith"
+    }
+  ]

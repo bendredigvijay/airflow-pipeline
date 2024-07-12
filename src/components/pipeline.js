@@ -3,91 +3,18 @@ import { MantineReactTable, useMantineReactTable } from 'mantine-react-table';
 import { Button, TextInput, Modal } from '@mantine/core';
 import { FaEdit, FaRegClone } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
-
-const data = [
-  {
-    "id": 1,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 2,
-    "name": { "firstName": "Jane", "lastName": "Doe" },
-    "environment": "Development",
-    "noOfDAGs": 3,
-    "createdOn": "2023-06-20",
-    "createdBy": "Bob Johnson"
-  },
-  {
-    "id": 3,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 4,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 5,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 6,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 7,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 8,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  },
-  {
-    "id": 9,
-    "name": { "firstName": "John", "lastName": "Doe" },
-    "environment": "Production",
-    "noOfDAGs": 5,
-    "createdOn": "2023-05-15",
-    "createdBy": "Alice Smith"
-  }
-];
+import data from '../jsons/pipeline.json'; 
 
 const Pipeline = () => {
   const [dataState, setDataState] = useState(data);
-  const [editItem, setEditItem] = useState(null); // State for edit item
+  const [editItem, setEditItem] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
-  const [createModalOpen, setCreateModalOpen] = useState(false); // State for create modal
+  const [createModalOpen, setCreateModalOpen] = useState(false);
 
+  // Columns definition
   const columns = useMemo(
     () => [
-      { accessorKey: 'serialNo', header: 'S.No', align: 'center' }, // Serial Number column
+      { accessorKey: 'serialNo', header: 'S.No', align: 'center' },
       { accessorKey: 'name.firstName', header: 'First Name' },
       { accessorKey: 'environment', header: 'Environment' },
       { accessorKey: 'noOfDAGs', header: 'No of DAGs' },
@@ -117,7 +44,7 @@ const Pipeline = () => {
     [dataState]
   );
 
-  // Generate table data with serial numbers
+  // Table data with serial numbers
   const tableData = useMemo(() => {
     return Array.isArray(dataState) ? dataState.map((item, index) => ({
       ...item,
@@ -125,12 +52,14 @@ const Pipeline = () => {
     })) : [];
   }, [dataState]);
 
+  // MantineReactTable setup
   const table = useMantineReactTable({
     columns,
     data: tableData,
     enableFullScreenToggle: false,
   });
 
+  // Event handlers
   const handleEdit = (item) => {
     setEditItem({ ...item });
     setEditModalOpen(true);
@@ -147,6 +76,7 @@ const Pipeline = () => {
     setDataState([...dataState, clonedItem]);
   };
 
+  // Edit modal handlers
   const handleSaveEdit = () => {
     const updatedData = dataState.map((item) =>
       item.id === editItem.id ? editItem : item
@@ -160,6 +90,7 @@ const Pipeline = () => {
     setEditModalOpen(false);
   };
 
+  // Create modal handlers
   const handleSaveCreate = () => {
     // Handle save for create modal
     setCreateModalOpen(false);
@@ -249,24 +180,22 @@ const Pipeline = () => {
       <Modal
         opened={createModalOpen}
         onClose={handleCancelCreate}
-        title={<h3 style={{ marginRight: '10px' , fontWeight: 'bold' }}>Setup Pipelines</h3>}
+        title={<h3 style={{ marginRight: '10px', fontWeight: 'bold' }}>Setup Pipelines</h3>}
       >
         <div>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Data Extraction</Button>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Data Transformation</Button>
           <Button style={{ marginBottom: '10px', width: '100%' }}>Run Model</Button>
           <div style={{ marginTop: '20px', textAlign: 'center' }}>
-          <Button onClick={handleCancelCreate} style={{ marginRight: '10px' }} color="red">
+            <Button onClick={handleCancelCreate} style={{ marginRight: '10px' }} color="red">
               Cancel
             </Button>
-            <Button onClick={handleSaveCreate} >
+            <Button onClick={handleSaveCreate}>
               Save
             </Button>
           </div>
         </div>
       </Modal>
-
-
     </div>
   );
 };
